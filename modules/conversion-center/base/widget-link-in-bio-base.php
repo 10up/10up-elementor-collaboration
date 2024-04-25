@@ -24,11 +24,14 @@ abstract class Widget_Link_In_Bio_Base extends Widget_Base {
 		return [
 			'content' => [
 				'identity_section' => [
-					'identity_image_style' => true,
+					'identity_image_style' => [
+						'default' => 'profile',
+					],
+					'has_heading_text' => false,
 				],
 				'bio_section' => [
 					'title' => [
-						'default' => esc_html__( 'Sara Parker', 'elementor' ),
+						'default' => esc_html__( 'Kitchen Chronicles', 'elementor' ),
 					],
 					'description' => [
 						'default' => esc_html__( 'Join me on my journey to a healthier lifestyle', 'elementor' ),
@@ -57,9 +60,13 @@ abstract class Widget_Link_In_Bio_Base extends Widget_Base {
 				'cta_section' => [
 					'has_dividers' => false,
 					'has_image_border' => false,
-					'has_link_type' => true,
+					'has_link_type' => [
+						'default' => 'button',
+					],
 					'has_corners' => true,
 					'has_padding' => true,
+					'has_background_control' => true,
+					'has_cta_control_text' => false,
 					'has_border_control' => [
 						'prefix' => 'cta_links',
 						'show_border_args' => [
@@ -81,7 +88,7 @@ abstract class Widget_Link_In_Bio_Base extends Widget_Base {
 				],
 				'border_section' => [
 					'field_options' => false,
-				]
+				],
 			],
 
 		];
@@ -640,181 +647,7 @@ JS;
 			'step' => 1,
 		];
 
-		$this->start_controls_section(
-			'identity_section_style',
-			[
-				'label' => esc_html__( 'Identity', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		// Profile image style controls
-
-		$this->add_responsive_control(
-			'identity_image_size',
-			[
-				'label' => esc_html__( 'Image Size', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'unit' => 'px',
-				],
-				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
-				'condition' => [
-					'identity_image_style' => 'profile',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-profile-width: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'identity_image_shape',
-			[
-				'label' => esc_html__( 'Image Shape', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'circle',
-				'options' => [
-					'circle' => esc_html__( 'Circle', 'elementor' ),
-					'square' => esc_html__( 'Square', 'elementor' ),
-				],
-				'condition' => [
-					'identity_image_style' => 'profile',
-				],
-			]
-		);
-
-		$this->add_control(
-			'identity_image_show_border',
-			[
-				'label' => esc_html__( 'Border', 'elementor' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'elementor' ),
-				'label_off' => esc_html__( 'No', 'elementor' ),
-				'return_value' => 'yes',
-				'default' => '',
-				'condition' => [
-					'identity_image_style' => 'profile',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'identity_image_border_width',
-			[
-				'label' => esc_html__( 'Border Width', 'elementor' ) . ' (px)',
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => $border_width_range,
-				],
-				'condition' => [
-					'identity_image_style' => 'profile',
-					'identity_image_show_border' => 'yes',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-profile-border-width: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'identity_image_border_color',
-			[
-				'label' => esc_html__( 'Border Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'condition' => [
-					'identity_image_style' => 'profile',
-					'identity_image_show_border' => 'yes',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-profile-border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		// Cover image style controls
-
-		$this->add_responsive_control(
-			'identity_image_height',
-			[
-				'label' => esc_html__( 'Image Height', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 1000,
-						'step' => 1,
-					],
-					'%' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'default' => [
-					'unit' => 'px',
-				],
-				'condition' => [
-					'identity_image_style' => 'cover',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-cover-height: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'identity_image_show_bottom_border',
-			[
-				'label' => esc_html__( 'Bottom Border', 'elementor' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'elementor' ),
-				'label_off' => esc_html__( 'No', 'elementor' ),
-				'return_value' => 'yes',
-				'default' => '',
-				'condition' => [
-					'identity_image_style' => 'cover',
-				],
-			]
-		);
-
-		$this->add_control(
-			'identity_image_border_bottom_width',
-			[
-				'label' => esc_html__( 'Border Width', 'elementor' ) . ' (px)',
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => $border_width_range,
-				],
-				'condition' => [
-					'identity_image_style' => 'cover',
-					'identity_image_show_bottom_border' => 'yes',
-
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-cover-border-bottom-width: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'identity_image_bottom_border_color',
-			[
-				'label' => esc_html__( 'Border Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'condition' => [
-					'identity_image_style' => 'cover',
-					'identity_image_show_bottom_border' => 'yes',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-cover-border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_section();
+		$this->add_style_identity_controls( $border_width_range );
 
 		$this->start_controls_section(
 			'bio_section_style',
@@ -969,6 +802,7 @@ JS;
 				'default' => 'classic',
 			],
 		];
+
 		$config = static::get_configuration();
 		if ( $config['style']['border_section']['field_options'] ) {
 			$bg_image_field_options = array_merge( $bg_image_field_options, $config['style']['border_section']['field_options'] );
@@ -1306,13 +1140,23 @@ JS;
 			]
 		);
 
+		if ( $config['content']['identity_section']['has_heading_text'] ) {
+			$this->add_control(
+				'identity_heading',
+				[
+					'label' => $config['content']['identity_section']['has_heading_text'],
+					'type' => Controls_Manager::HEADING,
+				]
+			);
+		}
+
 		if ( $config['content']['identity_section']['identity_image_style'] ) {
 			$this->add_control(
 				'identity_image_style',
 				[
 					'label' => esc_html__( 'Image style', 'elementor' ),
 					'type' => Controls_Manager::SELECT,
-					'default' => 'profile',
+					'default' => $config['content']['identity_section']['identity_image_style']['default'],
 					'options' => [
 						'profile' => esc_html__( 'Profile', 'elementor' ),
 						'cover' => esc_html__( 'Cover', 'elementor' ),
@@ -1320,7 +1164,6 @@ JS;
 				]
 			);
 		}
-
 
 		$this->add_control(
 			'identity_image',
@@ -1346,13 +1189,23 @@ JS;
 			]
 		);
 
+		if ( $config['style']['cta_section']['has_cta_control_text'] ) {
+			$this->add_control(
+				'cta_links_heading',
+				[
+					'label' => $config['style']['cta_section']['has_cta_control_text'],
+					'type' => Controls_Manager::HEADING,
+				]
+			);
+		}
+
 		if ( $config['style']['cta_section']['has_link_type'] ) {
 			$this->add_control(
 				'cta_links_type',
 				[
 					'label' => esc_html__( 'Type', 'elementor' ),
 					'type' => Controls_Manager::SELECT,
-					'default' => 'button',
+					'default' => $config['style']['cta_section']['has_link_type']['default'],
 					'options' => [
 						'button' => esc_html__( 'Button', 'elementor' ),
 						'link' => esc_html__( 'Link', 'elementor' ),
@@ -1373,19 +1226,26 @@ JS;
 			]
 		);
 
-		$this->add_control(
-			'cta_links_background_color',
-			[
-				'label' => esc_html__( 'Background Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'condition' => [
-					'cta_links_type' => 'button',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-ctas-background-color: {{VALUE}}',
-				],
-			]
-		);
+		$bga_color_condition = [];
+		if ( $config['style']['cta_section']['has_link_type'] ) {
+			$bga_color_condition = [
+				'cta_links_type' => 'button',
+			];
+		}
+
+		if ( $config['style']['cta_section']['has_background_control'] ) {
+			$this->add_control(
+				'cta_links_background_color',
+				[
+					'label' => esc_html__( 'Background Color', 'elementor' ),
+					'type' => Controls_Manager::COLOR,
+					'condition' => $bga_color_condition,
+					'selectors' => [
+						'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-ctas-background-color: {{VALUE}}',
+					],
+				]
+			);
+		}
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -1467,7 +1327,7 @@ JS;
 					'label' => esc_html__( 'Color', 'elementor' ),
 					'type' => Controls_Manager::COLOR,
 					'selectors' => [
-						'{{WRAPPER}} .e-link-in-bio__cta:not(:last-child)' => 'border-bottom-color: {{VALUE}}',
+						'{{WRAPPER}} .e-link-in-bio__cta' => 'border-bottom-color: {{VALUE}}',
 					],
 				]
 			);
@@ -1489,11 +1349,195 @@ JS;
 						'unit' => 'px',
 					],
 					'selectors' => [
-						'{{WRAPPER}} .e-link-in-bio__cta:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .e-link-in-bio__cta' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
 					],
 				]
 			);
 		}
+
+		$this->end_controls_section();
+	}
+
+	private function add_style_identity_controls( array $border_width_range ): void {
+		$config = static::get_configuration();
+		$this->start_controls_section(
+			'identity_section_style',
+			[
+				'label' => esc_html__( 'Identity', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$condition = [];
+		if ( $config['content']['identity_section']['identity_image_style'] ) {
+			$condition = [
+				'identity_image_style' => 'profile',
+			];
+		}
+
+		// Profile image style controls
+
+		$this->add_responsive_control(
+			'identity_image_size',
+			[
+				'label' => esc_html__( 'Image Size', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'unit' => 'px',
+				],
+				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+				'condition' => $condition,
+				'selectors' => [
+					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-profile-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'identity_image_shape',
+			[
+				'label' => esc_html__( 'Image Shape', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'circle',
+				'options' => [
+					'circle' => esc_html__( 'Circle', 'elementor' ),
+					'square' => esc_html__( 'Square', 'elementor' ),
+				],
+				'condition' => $condition,
+			]
+		);
+
+		$this->add_control(
+			'identity_image_show_border',
+			[
+				'label' => esc_html__( 'Border', 'elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'elementor' ),
+				'label_off' => esc_html__( 'No', 'elementor' ),
+				'return_value' => 'yes',
+				'default' => '',
+				'condition' => $condition,
+			]
+		);
+
+		$this->add_responsive_control(
+			'identity_image_border_width',
+			[
+				'label' => esc_html__( 'Border Width', 'elementor' ) . ' (px)',
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => $border_width_range,
+				],
+				'condition' => array_merge(
+					$condition,
+					[
+						'identity_image_show_border' => 'yes',
+					]
+				),
+				'selectors' => [
+					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-profile-border-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'identity_image_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => array_merge(
+					$condition,
+					[
+						'identity_image_show_border' => 'yes',
+					]
+				),
+				'selectors' => [
+					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-profile-border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		// Cover image style controls
+
+		$this->add_responsive_control(
+			'identity_image_height',
+			[
+				'label' => esc_html__( 'Image Height', 'elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+				],
+				'condition' => [
+					'identity_image_style' => 'cover',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-cover-height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'identity_image_show_bottom_border',
+			[
+				'label' => esc_html__( 'Bottom Border', 'elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Yes', 'elementor' ),
+				'label_off' => esc_html__( 'No', 'elementor' ),
+				'return_value' => 'yes',
+				'default' => '',
+				'condition' => [
+					'identity_image_style' => 'cover',
+				],
+			]
+		);
+
+		$this->add_control(
+			'identity_image_border_bottom_width',
+			[
+				'label' => esc_html__( 'Border Width', 'elementor' ) . ' (px)',
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => $border_width_range,
+				],
+				'condition' => [
+					'identity_image_style' => 'cover',
+					'identity_image_show_bottom_border' => 'yes',
+
+				],
+				'selectors' => [
+					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-cover-border-bottom-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'identity_image_bottom_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => [
+					'identity_image_style' => 'cover',
+					'identity_image_show_bottom_border' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .e-link-in-bio' => '--e-link-in-bio-identity-image-cover-border-color: {{VALUE}};',
+				],
+			]
+		);
 
 		$this->end_controls_section();
 	}
