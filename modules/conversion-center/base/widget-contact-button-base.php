@@ -160,6 +160,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
+				'ai' => [
+					'active' => false,
+				],
 				'label_block' => true,
 				'placeholder' => esc_html__( '@', 'elementor' ),
 				'condition' => [
@@ -176,6 +179,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
+				'ai' => [
+					'active' => false,
+				],
 				'label_block' => true,
 				'condition' => [
 					'chat_button_platform' => Social_Network_Provider::EMAIL,
@@ -188,6 +194,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 			[
 				'label' => esc_html__( 'Message', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
+				'ai' => [
+					'active' => false,
+				],
 				'condition' => [
 					'chat_button_platform' => Social_Network_Provider::EMAIL,
 				],
@@ -201,6 +210,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
+				],
+				'ai' => [
+					'active' => false,
 				],
 				'label_block' => true,
 				'placeholder' => esc_html__( '+', 'elementor' ),
@@ -222,6 +234,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
+				],
+				'ai' => [
+					'active' => false,
 				],
 				'label_block' => true,
 				'condition' => [
@@ -505,6 +520,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 					'dynamic' => [
 						'active' => true,
 					],
+					'ai' => [
+						'active' => false,
+					],
 					'default' => 'Tooltip',
 					'placeholder' => esc_html__( 'Enter icon text', 'elementor' ),
 				],
@@ -539,6 +557,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => esc_html__( 'Subject', 'elementor' ),
 				'label_block' => true,
+				'ai' => [
+					'active' => false,
+				],
 				'condition' => [
 					'contact_icon_platform' => [
 						Social_Network_Provider::EMAIL,
@@ -554,6 +575,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'type' => Controls_Manager::TEXTAREA,
 				'placeholder' => esc_html__( 'Message', 'elementor' ),
 				'label_block' => true,
+				'ai' => [
+					'active' => false,
+				],
 				'condition' => [
 					'contact_icon_platform' => [
 						Social_Network_Provider::EMAIL,
@@ -570,6 +594,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
+				'ai' => [
+					'active' => false,
+				],
 				'label_block' => true,
 				'placeholder' => esc_html__( '+', 'elementor' ),
 				'condition' => [
@@ -579,9 +606,6 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 						Social_Network_Provider::VIBER,
 						Social_Network_Provider::TELEPHONE,
 					],
-				],
-				'ai' => [
-					'active' => false,
 				],
 			],
 		);
@@ -593,6 +617,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
+				],
+				'ai' => [
+					'active' => false,
 				],
 				'label_block' => true,
 				'placeholder' => esc_html__( 'Enter your username', 'elementor' ),
@@ -612,6 +639,9 @@ abstract class Widget_Contact_Button_Base extends Widget_Base {
 				'type' => Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
+				],
+				'ai' => [
+					'active' => false,
 				],
 				'autocomplete' => true,
 				'label_block' => true,
