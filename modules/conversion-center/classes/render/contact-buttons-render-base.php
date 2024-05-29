@@ -56,7 +56,7 @@ abstract class Contact_Buttons_Render_Base {
 		}
 
 		if ( ! empty( $hover_animation ) ) {
-			$button_classnames .= ' elementor-animation-' . $hover_animation;
+			$button_classnames .= ' animated elementor-animation-' . $hover_animation;
 		}
 
 		if ( ! empty( $animation_duration ) ) {

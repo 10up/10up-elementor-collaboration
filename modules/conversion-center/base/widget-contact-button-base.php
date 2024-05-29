@@ -869,8 +869,17 @@ JS;
 			'style_button_color_hover_animation',
 			[
 				'label' => esc_html__( 'Hover Animation', 'elementor' ),
-				'type' => Controls_Manager::HOVER_ANIMATION,
+				'type' => Controls_Manager::SELECT,
+				'default' => 'none',
+				'options' => [
+					'none' => esc_html__( 'None', 'elementor' ),
+					'grow' => esc_html__( 'Grow', 'elementor' ),
+					'pulse' => esc_html__( 'Pulse', 'elementor' ),
+					'push' => esc_html__( 'Push', 'elementor' ),
+					'float' => esc_html__( 'Float', 'elementor' ),
+				],
 				'frontend_available' => true,
+				'label_block' => true,
 			]
 		);
 
