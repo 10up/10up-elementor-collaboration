@@ -285,9 +285,15 @@ trait Conversion_Center_Controls_Trait {
 			array_merge(
 				[
 					'label' => esc_html__( 'Hover Animation', 'elementor' ),
-					'type' => Hover_Animation_Contact_Buttons::TYPE,
+					'type' => Controls_Manager::HOVER_ANIMATION,
 					'frontend_available' => true,
 					'default' => 'grow',
+					'animations' => [
+						'grow' => 'Grow',
+						'pulse' => 'Pulse',
+						'push' => 'Push',
+						'float' => 'Float',
+					],
 				],
 				$args
 			)

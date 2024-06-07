@@ -118,6 +118,7 @@ class Control_Hover_Animation extends Base_Data_Control {
 	 */
 	public function content_template() {
 		?>
+		<# console.log( data ) #>
 		<div class="elementor-control-field">
 			<label for="<?php $this->print_control_uid(); ?>" class="elementor-control-title">{{{ data.label }}}</label>
 			<div class="elementor-control-input-wrapper">
@@ -149,6 +150,35 @@ class Control_Hover_Animation extends Base_Data_Control {
 	protected function get_default_settings() {
 		return [
 			'label_block' => true,
+			'animations' => [
+				'grow' => 'Grow',
+				'shrink' => 'Shrink',
+				'pulse' => 'Pulse',
+				'pulse-grow' => 'Pulse Grow',
+				'pulse-shrink' => 'Pulse Shrink',
+				'push' => 'Push',
+				'pop' => 'Pop',
+				'bounce-in' => 'Bounce In',
+				'bounce-out' => 'Bounce Out',
+				'rotate' => 'Rotate',
+				'grow-rotate' => 'Grow Rotate',
+				'float' => 'Float',
+				'sink' => 'Sink',
+				'bob' => 'Bob',
+				'hang' => 'Hang',
+				'skew' => 'Skew',
+				'skew-forward' => 'Skew Forward',
+				'skew-backward' => 'Skew Backward',
+				'wobble-vertical' => 'Wobble Vertical',
+				'wobble-horizontal' => 'Wobble Horizontal',
+				'wobble-to-bottom-right' => 'Wobble To Bottom Right',
+				'wobble-to-top-right' => 'Wobble To Top Right',
+				'wobble-top' => 'Wobble Top',
+				'wobble-bottom' => 'Wobble Bottom',
+				'wobble-skew' => 'Wobble Skew',
+				'buzz' => 'Buzz',
+				'buzz-out' => 'Buzz Out',
+			],
 		];
 	}
 
