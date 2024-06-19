@@ -1,4 +1,4 @@
-.e-contact-buttons-var-4 {
+.e-floating-buttons-var-4 {
 	--e-contact-buttons-size-small: 45px;
 	--e-contact-buttons-size-medium: 50px;
 	--e-contact-buttons-size-large: 55px;
@@ -19,7 +19,7 @@
 			&__chat-button-container {
 				padding-inline-end: 0;
 			}
-	
+
 			&__contact-links {
 				align-items: flex-end;
 			}
@@ -51,19 +51,19 @@
 			&__chat-button-container {
 				padding-inline-start: 0;
 			}
-	
+
 			&__contact-links {
 				align-items: flex-start;
 			}
-	
+
 			&__contact-tooltip {
 				order: 2;
 			}
-	
+
 			&__contact-icon-container  {
 				order: 1;
 			}
-	
+
 			&__contact-tooltip {
 				&::after {
 					border-inline-start-color: transparent;
@@ -87,7 +87,7 @@
 			&__contact-links {
 				align-items: center;
 			}
-	
+
 			&__content-wrapper {
 				inset-inline-end: 40px;
 			}
