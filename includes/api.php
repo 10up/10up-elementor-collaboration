@@ -69,6 +69,7 @@ class Api {
 	 * @return array|false Info data, or false.
 	 */
 	private static function get_info_data( $force_update = false ) {
+
 		$cache_key = self::TRANSIENT_KEY_PREFIX . ELEMENTOR_VERSION;
 
 		$info_data = get_transient( $cache_key );
