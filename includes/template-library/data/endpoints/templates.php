@@ -48,6 +48,7 @@ class Templates extends Endpoint {
 	}
 
 	public function get_items( $request ) {
+		error_log( 'get_items' );
 		return $this->reorder_categories( Plugin::$instance->templates_manager->get_library_data( [ 'filter_sources' => [ $request->get_param( 'source' ) ] ] ) );
 	}
 

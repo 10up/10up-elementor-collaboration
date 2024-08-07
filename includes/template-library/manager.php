@@ -230,7 +230,7 @@ class Manager {
 		$force_update = ! empty( $args['sync'] );
 
 		return [
-			'templates' => $this->get_templates( $filter_sources, $force_update ),
+			'templates' => $this->get_templates( $filter_sources, true ),
 			'config' => $library_data['types_data'],
 		];
 	}
